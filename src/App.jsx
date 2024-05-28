@@ -211,15 +211,24 @@ function Footer() {
       <Typography sx={{ paddingBottom: "20px" }}>
         {/* MuiLink uses composition! */}
         <MuiLink link={"#top"} newTab={false}>
-          <Typography fontWeight="bold" color="#ffffff">
+          <Typography
+            fontWeight="bold"
+            color="#ffffff"
+            fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
+          >
             Back to top
           </Typography>
         </MuiLink>
       </Typography>
 
       <Grid container spacing={{ xs: 1, sm: 2 }}>
-        <Grid item xs={12} sm={6}>
-          <Typography textAlign="left" fontWeight="bold" color="#ffffff">
+        <Grid item xs={12} sm={6} sx={{ marginBottom: "10px" }}>
+          <Typography
+            textAlign="left"
+            fontWeight="bold"
+            color="#ffffff"
+            fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
+          >
             Site developer links
             <br />
             {devLinks.map((element, index) => {
@@ -234,12 +243,21 @@ function Footer() {
             })}
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography textAlign="left" fontWeight="bold" color="#ffffff">
+        <Grid item xs={12} sm={6} sx={{ marginBottom: "10px" }}>
+          <Typography
+            textAlign="left"
+            fontWeight="bold"
+            color="#ffffff"
+            fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
+          >
             With thanks...
             <br />
           </Typography>
-          <Typography textAlign="left" color="#ffffff">
+          <Typography
+            textAlign="left"
+            color="#ffffff"
+            fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
+          >
             Headline photo by&nbsp;
             <MuiLink
               link="https://unsplash.com/@mercantile?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
@@ -255,7 +273,11 @@ function Footer() {
               Unsplash
             </MuiLink>
           </Typography>
-          <Typography textAlign="left" color="#ffffff">
+          <Typography
+            textAlign="left"
+            color="#ffffff"
+            fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
+          >
             Home page photo by&nbsp;
             <MuiLink
               link="https://unsplash.com/@mikepetrucci?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
@@ -271,7 +293,11 @@ function Footer() {
               Unsplash
             </MuiLink>
           </Typography>
-          <Typography textAlign="left" color="#ffffff">
+          <Typography
+            textAlign="left"
+            color="#ffffff"
+            fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
+          >
             Fake products from &nbsp;
             <MuiLink link="https://fakestoreapi.com" newTab={true}>
               Fake Store API

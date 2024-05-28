@@ -65,6 +65,8 @@ To do list:
     - make product summaries look nicer
     - work out how to push footer always to bottom even when content doesn't reach bottom
       - (https://css-tricks.com/couple-takes-sticky-footer/)
-  -  
+  - Mobile compatibility:
+    - cart being too wide makes navbar act strangely off screen
+    footer could do with responsive text sizes to shrink for smaller screen sizes
 
 */
