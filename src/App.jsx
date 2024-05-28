@@ -256,6 +256,22 @@ function Footer() {
             </MuiLink>
           </Typography>
           <Typography textAlign="left" color="#ffffff">
+            Home page photo by&nbsp;
+            <MuiLink
+              link="https://unsplash.com/@mikepetrucci?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              newTab={true}
+            >
+              Mike Petrucci&nbsp;
+            </MuiLink>
+            on&nbsp;
+            <MuiLink
+              link="https://unsplash.com/photos/gray-and-blue-open-signage-c9FQyqIECds?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              newTab={true}
+            >
+              Unsplash
+            </MuiLink>
+          </Typography>
+          <Typography textAlign="left" color="#ffffff">
             Fake products from &nbsp;
             <MuiLink link="https://fakestoreapi.com" newTab={true}>
               Fake Store API
