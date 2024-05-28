@@ -44,6 +44,7 @@
 
 body {
   margin: 0;
+  height: 100%;
 }
 
 /* this is applied in main.jsx at the highest level, hence is the starting point other than the margins and padding applied in body */

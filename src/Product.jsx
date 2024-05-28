@@ -22,7 +22,7 @@ function Product() {
   const displayItem = shopItems.find((item) => item.id == productId);
 
   return (
-    <Paper sx={{ margin: "30px auto", width: "60%" }} elevation={5}>
+    <Paper sx={{ margin: "30px auto 0 auto", width: "60%" }} elevation={5}>
       <Grid
         container
         padding="15px"
@@ -42,7 +42,7 @@ function Product() {
         </Grid>
         <Box
           sx={{
-            width: "25vw",
+            width: "20vw",
             padding: "40px",
             boxShadow:
               "inset 6px 6px 3px -2px #000, inset -6px -6px 3px -2px #000",

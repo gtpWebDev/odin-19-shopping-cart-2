@@ -54,3 +54,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </ThemeProvider>
   </React.StrictMode>
 );
+
+/*
+
+To do list:
+  - Add testing for two main components - product and cart
+  - Look at adding styling themes for Material UI to avoid local repeats, etc.
+  - Complete fluff content and styling:
+    - title page, subpage titles
+    - make product summaries look nicer
+    - work out how to push footer always to bottom even when content doesn't reach bottom
+      - (https://css-tricks.com/couple-takes-sticky-footer/)
+  -  
+
+*/

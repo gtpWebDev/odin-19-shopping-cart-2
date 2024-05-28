@@ -27,74 +27,82 @@ function Cart() {
       <Typography
         component="h2"
         variant="h2"
-        sx={{ color: "secondary.main", fontWeight: "bold", padding: "15px 0" }}
+        fontSize={{ xs: "40px", sm: "50px" }}
+        sx={{
+          color: "primary.main",
+          fontWeight: "bold",
+          padding: "15px 0",
+          textShadow: "1px 1px black",
+        }}
       >
         Your Cart...
       </Typography>
 
       <Container maxWidth="lg" sx={{ marginBottom: "30px" }}>
         <Paper elevation={5}>
-          <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="center" colSpan={2}></TableCell>
-                <TableCell align="center">Units</TableCell>
-                <TableCell align="center">Price</TableCell>
-                <TableCell align="center">Total Price</TableCell>
-                <TableCell></TableCell>
-              </TableRow>
-            </TableHead>
+          {cartItems.length > 0 ? (
+            <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center" colSpan={2}></TableCell>
+                  <TableCell align="center">Units</TableCell>
+                  <TableCell align="center">Price</TableCell>
+                  <TableCell align="center">Total Price</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableHead>
 
-            <TableBody>
-              {cartItems.length > 0 ? (
-                <>
-                  {cartItems.map((item, index) => {
-                    return (
-                      <ItemRow
-                        key={index}
-                        cartItem={item}
-                        removeCartItem={removeCartItem}
-                      />
-                    );
-                  })}
-                  <TableRow>
-                    <TableCell colSpan={3} />
-                    <TableCell colSpan={1} align="center">
-                      <Typography
-                        component="body1"
-                        variant="body1"
-                        fontWeight="bold"
-                      >
-                        Subtotal
-                      </Typography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Typography
-                        component="body1"
-                        variant="body1"
-                        fontWeight="bold"
-                      >
-                        {numeral(subtotal).format("$0,0.00")}
-                      </Typography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Button
-                        variant="outlined"
-                        onClick={() => {
-                          alert(
-                            `You have not just been charged ${numeral(
-                              subtotal
-                            ).format("$0,0.00")}`
-                          );
-                        }}
-                        sx={{ minWidth: "120px" }}
-                      >
-                        Purchase
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                </>
-              ) : (
+              <TableBody>
+                {cartItems.map((item, index) => {
+                  return (
+                    <ItemRow
+                      key={index}
+                      cartItem={item}
+                      removeCartItem={removeCartItem}
+                    />
+                  );
+                })}
+                <TableRow>
+                  <TableCell colSpan={3} />
+                  <TableCell colSpan={1} align="center">
+                    <Typography
+                      component="body1"
+                      variant="body1"
+                      fontWeight="bold"
+                    >
+                      Subtotal
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography
+                      component="body1"
+                      variant="body1"
+                      fontWeight="bold"
+                    >
+                      {numeral(subtotal).format("$0,0.00")}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Button
+                      variant="outlined"
+                      onClick={() => {
+                        alert(
+                          `You have not just been charged ${numeral(
+                            subtotal
+                          ).format("$0,0.00")}`
+                        );
+                      }}
+                      sx={{ minWidth: "120px" }}
+                    >
+                      Purchase
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          ) : (
+            <Table>
+              <TableBody>
                 <TableRow colSpan={6}>
                   <TableCell align="center">
                     <Typography component="h4" sx={{ padding: "20px" }}>
@@ -102,9 +110,9 @@ function Cart() {
                     </Typography>
                   </TableCell>
                 </TableRow>
-              )}
-            </TableBody>
-          </Table>
+              </TableBody>
+            </Table>
+          )}
         </Paper>
       </Container>
 

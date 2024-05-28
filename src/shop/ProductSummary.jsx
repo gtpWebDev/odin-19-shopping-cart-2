@@ -1,5 +1,7 @@
 // Build with Material UI
 
+import numeral from "numeral";
+
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -9,8 +11,8 @@ import PropTypes from "prop-types";
 export default function ProductSummary(props) {
   return (
     <Paper elevation={5}>
-      <Box paddingX={1}>
-        <Typography component="h2" variant="h6">
+      <Box padding={3}>
+        <Typography component="h2" variant="h6" fontWeight="bold">
           {props.title}
         </Typography>
       </Box>
@@ -21,9 +23,9 @@ export default function ProductSummary(props) {
         src={props.imageUrl}
         alt=""
       />
-      <Box paddingX={1} sx={{ fontWeight: "bold", color: "black" }}>
+      <Box padding={3} sx={{ fontWeight: "bold", color: "black" }}>
         <Typography component="h2" variant="h5">
-          ${props.price}
+          {numeral(props.price).format("$0,0.00")}
         </Typography>
       </Box>
     </Paper>

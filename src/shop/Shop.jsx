@@ -14,10 +14,12 @@ export default function Shop() {
         <Typography
           component="h2"
           variant="h2"
+          fontSize={{ xs: "40px", sm: "50px" }}
           sx={{
-            color: "secondary.main",
+            color: "primary.main",
             fontWeight: "bold",
             padding: "15px 0",
+            textShadow: "1px 1px black",
           }}
         >
           Our Products

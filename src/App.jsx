@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
+import MuiLink from "./Link.jsx";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 import PropTypes from "prop-types";
@@ -16,6 +17,7 @@ import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 
 import titleBackground from "./assets/images/header-background-image.jpg";
+
 import ScrollToTop from "./ScrollToTop";
 
 export default function App() {
@@ -28,13 +30,13 @@ export default function App() {
 
   const addCartItem = (item, numUnits) => {
     // Deep copy to ensure state change
-    const tempCartItems = structuredClone(cartItems);
-    if (tempCartItems.some((element) => element.id === item.id)) {
-      const index = tempCartItems.findIndex(
+    const cartItemsCopy = structuredClone(cartItems);
+    if (cartItemsCopy.some((element) => element.id === item.id)) {
+      const index = cartItemsCopy.findIndex(
         (element) => element.id === item.id
       );
-      tempCartItems[index].numUnits += numUnits;
-      setCartItems(tempCartItems);
+      cartItemsCopy[index].numUnits += numUnits;
+      setCartItems(cartItemsCopy);
     } else {
       const newCartItem = Object.assign(item, { numUnits: numUnits });
       setCartItems([...cartItems, newCartItem]);
@@ -43,10 +45,10 @@ export default function App() {
 
   const removeCartItem = (id) => {
     // Deep copy to ensure state change
-    const tempCartItems = structuredClone(cartItems);
-    const index = tempCartItems.findIndex((item) => item.id === id);
-    tempCartItems.splice(index, 1);
-    setCartItems(tempCartItems);
+    const cartItemsCopy = structuredClone(cartItems);
+    const index = cartItemsCopy.findIndex((item) => item.id === id);
+    cartItemsCopy.splice(index, 1);
+    setCartItems(cartItemsCopy);
   };
 
   return (
@@ -56,7 +58,6 @@ export default function App() {
         <Grid container direction="column">
           <TitleBar />
           <NavBar numCartItems={cartItems.length} />
-          {/* {cartItems ? <div>{cartItems[0]}</div> : <></>} */}
           <MainArea
             shopItems={shopItems}
             cartItems={cartItems}
@@ -85,19 +86,22 @@ function TitleBar() {
       <Box
         minHeight="200px"
         alignItems="center"
-        color="#ffffff"
-        fontSize="70px"
-        fontWeight="bold"
         container="header"
         sx={{
-          textShadow: "3px 3px var(--primary-color)",
-          // easy center of the item
+          // // easy center of the item
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
         }}
       >
-        The Odin Bazaar
+        <Typography
+          fontSize={{ xs: "50px", sm: "60px", md: "70px" }}
+          fontWeight="bold"
+          color="#ffffff"
+          sx={{ textShadow: "3px 3px var(--primary-color)" }}
+        >
+          The Odin Bazaar
+        </Typography>
       </Box>
     </Grid>
   );
@@ -166,25 +170,99 @@ MenuItem.propTypes = {
 
 function MainArea(props) {
   return (
-    <Grid item xs={12} sx={{ minHeight: "2000px" }}>
-      <main>
-        <Outlet
-          context={{
-            shopItems: props.shopItems,
-            cartItems: props.cartItems,
-            addCartItem: props.addCartItem,
-            removeCartItem: props.removeCartItem,
-          }}
-        />
-      </main>
-    </Grid>
+    <>
+      <Grid item xs={12} marginBottom="30px">
+        <main>
+          <Outlet
+            context={{
+              shopItems: props.shopItems,
+              cartItems: props.cartItems,
+              addCartItem: props.addCartItem,
+              removeCartItem: props.removeCartItem,
+            }}
+          />
+        </main>
+      </Grid>
+    </>
   );
 }
 
 function Footer() {
+  const devLinks = [
+    {
+      linkText: "Github - gtpWebDev",
+      link: "https://github.com/gtpWebDev",
+    },
+    {
+      linkText: "X / Twitter - gtpWebDev",
+      link: "https://x.com/gtpWebDev",
+    },
+    {
+      linkText: "gmail - gtpwebdev@gmail.com",
+      link: "gtpwebdev@gmail.com",
+    },
+  ];
   return (
-    <Grid item xs={12}>
-      <footer>Footer</footer>
-    </Grid>
+    <Box
+      backgroundColor="primary.contrastText"
+      flexShrink="0"
+      padding="20px 15%"
+    >
+      <Typography sx={{ paddingBottom: "20px" }}>
+        {/* MuiLink uses composition! */}
+        <MuiLink link={"#top"} newTab={false}>
+          <Typography fontWeight="bold" color="#ffffff">
+            Back to top
+          </Typography>
+        </MuiLink>
+      </Typography>
+
+      <Grid container spacing={{ xs: 1, sm: 2 }}>
+        <Grid item xs={12} sm={6}>
+          <Typography textAlign="left" fontWeight="bold" color="#ffffff">
+            Site developer links
+            <br />
+            {devLinks.map((element, index) => {
+              return (
+                <>
+                  <MuiLink link={element.link} newTab={true}>
+                    {element.linkText}
+                  </MuiLink>
+                  <br />
+                </>
+              );
+            })}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography textAlign="left" fontWeight="bold" color="#ffffff">
+            With thanks...
+            <br />
+          </Typography>
+          <Typography textAlign="left" color="#ffffff">
+            Headline photo by&nbsp;
+            <MuiLink
+              link="https://unsplash.com/@mercantile?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              newTab={true}
+            >
+              Clark Street Mercantile&nbsp;
+            </MuiLink>
+            on&nbsp;
+            <MuiLink
+              link="https://unsplash.com/photos/clothes-store-interior-P3pI6xzovu0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              newTab={true}
+            >
+              Unsplash
+            </MuiLink>
+          </Typography>
+          <Typography textAlign="left" color="#ffffff">
+            Fake products from &nbsp;
+            <MuiLink link="https://fakestoreapi.com" newTab={true}>
+              Fake Store API
+            </MuiLink>
+          </Typography>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
